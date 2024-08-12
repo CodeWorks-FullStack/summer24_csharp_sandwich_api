@@ -17,7 +17,7 @@ CREATE TABLE
     bread VARCHAR(255) NOT NULL,
     protein VARCHAR(255) NOT NULL,
     dressing VARCHAR(255) NOT NULL,
-    -- unsigned means that it must be positive
+    -- unsigned means that it must be a positive integer
     calories SMALLINT UNSIGNED NOT NULL,
     hasPickles BOOL NOT NULL DEFAULT false
   ) default charset utf8mb4 COMMENT '';
