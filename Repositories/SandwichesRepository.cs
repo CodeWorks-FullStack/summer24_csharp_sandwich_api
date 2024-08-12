@@ -1,4 +1,5 @@
 
+
 namespace sandwich_api.Repositories;
 // repository level has access to database only
 public class SandwichesRepository
@@ -17,5 +18,16 @@ public class SandwichesRepository
     // dbContext.Sandwiches.find()
     List<Sandwich> sandwiches = _db.Query<Sandwich>(sql).ToList();
     return sandwiches;
+  }
+
+  public Sandwich GetSandwichById(int sandwichId)
+  {
+    // NOTE @ will parameterize a value, dapper will look through the object that you pass it for the supplied key, and insert the value. ALWAYS DO THIS AND NEVER STRING INTERPOLATE
+    string sql = "SELECT * FROM sandwiches WHERE id = @sandwichId;";
+
+    //                                               {sandwichId: 1}
+    // firstOrDefault returns the first row, or null if no rows are found
+    Sandwich sandwich = _db.Query<Sandwich>(sql, new { sandwichId = sandwichId }).FirstOrDefault();
+    return sandwich;
   }
 }

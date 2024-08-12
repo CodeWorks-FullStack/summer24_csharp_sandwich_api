@@ -26,4 +26,18 @@ public class SandwichesController : ControllerBase // SandwichesController exten
       return BadRequest(exception.Message); // next(error)
     }
   }
+
+  [HttpGet("{sandwichId}")] //.get(':sandwichId', this.getById)
+  public ActionResult<Sandwich> GetSandwichById(int sandwichId)
+  {
+    try
+    {
+      Sandwich sandwich = _sandwichesService.GetSandwichById(sandwichId);
+      return Ok(sandwich);
+    }
+    catch (Exception exception)
+    {
+      return BadRequest(exception.Message);
+    }
+  }
 }
