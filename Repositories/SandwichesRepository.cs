@@ -1,7 +1,3 @@
-
-
-
-
 namespace sandwich_api.Repositories;
 // repository level has access to database only
 public class SandwichesRepository
@@ -33,7 +29,7 @@ public class SandwichesRepository
     return sandwich;
   }
 
-  internal Sandwich CreateSandwich(Sandwich sandwichData)
+  public Sandwich CreateSandwich(Sandwich sandwichData)
   {
     string sql = @"
     INSERT INTO

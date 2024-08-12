@@ -35,7 +35,7 @@ public class SandwichesService
     return sandwich;
   }
 
-  internal string DestroySandwich(int sandwichId)
+  public string DestroySandwich(int sandwichId)
   {
     Sandwich sandwichToDestroy = GetSandwichById(sandwichId);
 
