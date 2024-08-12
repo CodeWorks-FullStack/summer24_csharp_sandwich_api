@@ -5,8 +5,17 @@ namespace sandwich_api.Controllers;
 public class SandwichesController : ControllerBase // SandwichesController extends BaseController
 {
   [HttpGet] // .get('', this.TestGet)
-  public string TestGet()
+  // we use ActionResult as an HTTP Response type
+  public ActionResult<List<Sandwich>> GetAllSandwiches()
   {
-    return "API WORKS";
+    try
+    {
+      List<Sandwich> sandwiches = [];
+      return Ok(sandwiches); // response.send()
+    }
+    catch (Exception exception)
+    {
+      return BadRequest(exception.Message); // next(error)
+    }
   }
 }
