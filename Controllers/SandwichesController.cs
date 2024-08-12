@@ -4,6 +4,14 @@ namespace sandwich_api.Controllers;
 [Route("api/sandwiches")] // super('api/sandwiches')
 public class SandwichesController : ControllerBase // SandwichesController extends BaseController
 {
+  private readonly SandwichesService _sandwichesService;
+
+  // constructor
+  public SandwichesController(SandwichesService sandwichesService)
+  {
+    _sandwichesService = sandwichesService;
+  }
+
   [HttpGet] // .get('', this.TestGet)
   // we use ActionResult as an HTTP Response type
   public ActionResult<List<Sandwich>> GetAllSandwiches()
