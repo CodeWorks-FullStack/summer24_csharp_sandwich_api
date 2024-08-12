@@ -18,7 +18,7 @@ public class SandwichesController : ControllerBase // SandwichesController exten
   {
     try
     {
-      List<Sandwich> sandwiches = [];
+      List<Sandwich> sandwiches = _sandwichesService.GetAllSandwiches();
       return Ok(sandwiches); // response.send()
     }
     catch (Exception exception)

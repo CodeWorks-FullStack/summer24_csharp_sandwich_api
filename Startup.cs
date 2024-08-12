@@ -36,6 +36,7 @@ public class Startup
 
     // NOTE configureServices can create a sandwiches service and hand out to whomever needs one
     services.AddScoped<SandwichesService>();
+    services.AddScoped<SandwichesRepository>();
   }
 
   private void ConfigureCors(IServiceCollection services)
