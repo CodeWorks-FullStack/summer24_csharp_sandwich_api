@@ -28,4 +28,10 @@ public class SandwichesService
 
     return sandwich;
   }
+
+  public Sandwich CreateSandwich(Sandwich sandwichData)
+  {
+    Sandwich sandwich = _sandwichesRepository.CreateSandwich(sandwichData);
+    return sandwich;
+  }
 }

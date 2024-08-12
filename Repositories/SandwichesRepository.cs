@@ -1,5 +1,6 @@
 
 
+
 namespace sandwich_api.Repositories;
 // repository level has access to database only
 public class SandwichesRepository
@@ -28,6 +29,19 @@ public class SandwichesRepository
     //                                               {sandwichId: 1}
     // firstOrDefault returns the first row, or null if no rows are found
     Sandwich sandwich = _db.Query<Sandwich>(sql, new { sandwichId = sandwichId }).FirstOrDefault();
+    return sandwich;
+  }
+
+  internal Sandwich CreateSandwich(Sandwich sandwichData)
+  {
+    string sql = @"
+    INSERT INTO
+    sandwiches (bread, protein, dressing, calories, hasPickles)
+    VALUES (@Bread, @Protein, @Dressing, @Calories, @HasPickles);
+    
+    SELECT * FROM sandwiches WHERE id = LAST_INSERT_ID();";
+
+    Sandwich sandwich = _db.Query<Sandwich>(sql, sandwichData).FirstOrDefault();
     return sandwich;
   }
 }

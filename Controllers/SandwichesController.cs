@@ -28,11 +28,25 @@ public class SandwichesController : ControllerBase // SandwichesController exten
   }
 
   [HttpGet("{sandwichId}")] //.get(':sandwichId', this.getById)
-  public ActionResult<Sandwich> GetSandwichById(int sandwichId)
+  public ActionResult<Sandwich> GetSandwichById(int sandwichId) // req.params.sandwichId
   {
     try
     {
       Sandwich sandwich = _sandwichesService.GetSandwichById(sandwichId);
+      return Ok(sandwich);
+    }
+    catch (Exception exception)
+    {
+      return BadRequest(exception.Message);
+    }
+  }
+
+  [HttpPost]
+  public ActionResult<Sandwich> CreateSandwich([FromBody] Sandwich sandwichData) // req.body
+  {
+    try
+    {
+      Sandwich sandwich = _sandwichesService.CreateSandwich(sandwichData);
       return Ok(sandwich);
     }
     catch (Exception exception)
