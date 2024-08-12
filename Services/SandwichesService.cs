@@ -34,4 +34,13 @@ public class SandwichesService
     Sandwich sandwich = _sandwichesRepository.CreateSandwich(sandwichData);
     return sandwich;
   }
+
+  internal string DestroySandwich(int sandwichId)
+  {
+    Sandwich sandwichToDestroy = GetSandwichById(sandwichId);
+
+    _sandwichesRepository.DestroySandwich(sandwichId);
+
+    return $"The {sandwichToDestroy.Protein} & {sandwichToDestroy.Dressing} on {sandwichToDestroy.Bread} has been deleted;";
+  }
 }

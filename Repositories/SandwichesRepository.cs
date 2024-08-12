@@ -1,6 +1,7 @@
 
 
 
+
 namespace sandwich_api.Repositories;
 // repository level has access to database only
 public class SandwichesRepository
@@ -43,5 +44,23 @@ public class SandwichesRepository
 
     Sandwich sandwich = _db.Query<Sandwich>(sql, sandwichData).FirstOrDefault();
     return sandwich;
+  }
+
+  // void means no return
+  public void DestroySandwich(int sandwichId)
+  {
+    string sql = "DELETE FROM sandwiches WHERE id = @sandwichId LIMIT 1;";
+
+    int rowsAffected = _db.Execute(sql, new { sandwichId });
+
+    if (rowsAffected == 0)
+    {
+      throw new Exception("DELETE WAS UN-SUCCESSFUL");
+    }
+
+    if (rowsAffected > 1)
+    {
+      throw new Exception("DELETE WAS TOO SUCCESSFUL. CALL THE POLICE");
+    }
   }
 }

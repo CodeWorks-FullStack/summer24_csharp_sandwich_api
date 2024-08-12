@@ -54,4 +54,18 @@ public class SandwichesController : ControllerBase // SandwichesController exten
       return BadRequest(exception.Message);
     }
   }
+
+  [HttpDelete("{sandwichId}")]
+  public ActionResult<string> DestroySandwich(int sandwichId)
+  {
+    try
+    {
+      string message = _sandwichesService.DestroySandwich(sandwichId);
+      return Ok(message);
+    }
+    catch (Exception exception)
+    {
+      return BadRequest(exception.Message);
+    }
+  }
 }
