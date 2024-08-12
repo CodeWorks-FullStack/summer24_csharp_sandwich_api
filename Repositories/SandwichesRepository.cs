@@ -29,6 +29,7 @@ public class SandwichesRepository
     string sql = "SELECT * FROM sandwiches WHERE id = @sandwichId;";
 
     // firstOrDefault returns the first row, or null if no rows are found
+    // the second argument passed to Query can be used by Dapper to SAFELY insert values into our sql statement. It must be an object, and we can use `new {}` to create an anonymous object in C#
     //                                               {sandwichId: 1}
     Sandwich sandwich = _db.Query<Sandwich>(sql, new { sandwichId = sandwichId }).FirstOrDefault();
     return sandwich;

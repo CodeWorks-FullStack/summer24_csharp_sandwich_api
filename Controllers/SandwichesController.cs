@@ -13,7 +13,7 @@ public class SandwichesController : ControllerBase // SandwichesController exten
     _sandwichesService = sandwichesService;
   }
 
-  [HttpGet] // .get('', this.TestGet)
+  [HttpGet] // .get('', this.GetAllSandwiches)
   // we use ActionResult as an HTTP Response type
   public ActionResult<List<Sandwich>> GetAllSandwiches()
   {
